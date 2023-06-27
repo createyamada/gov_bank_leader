@@ -6,7 +6,10 @@ import 'package:flame/game.dart';
 
 
 class ActionBtn extends SpriteComponent with TapCallbacks , HasGameRef  {
-  ActionBtn() : super(size: Vector2.all(1000.0));
+  ActionBtn() : super(
+    size: Vector2.all(100.0),
+    anchor: Anchor.center
+  );
 
   @override
   Future<void> onLoad() async {
