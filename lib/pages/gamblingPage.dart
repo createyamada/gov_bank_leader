@@ -22,74 +22,81 @@ class _GamblingPageState extends State<GamblingPage> {
   Widget build(BuildContext context) {
     final MyGambling myGambling = MyGambling(context);
     viewSize = MediaQuery.of(context).size;
-    return GameWidget(
-      game: myGambling,
-      loadingBuilder: (context) => const Center(
-        child: CircularProgressIndicator(),
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(
+        title: const Text("ギャンブル画面"),
+        leadingWidth: 85,  //leadingWidthを設定する
+        leading: TextButton(
+            child: Text(
+              'キャンセル',
+              style: TextStyle(
+                color: Colors.white,  //文字の色を白にする
+                fontWeight: FontWeight.bold,  //文字を太字する
+                fontSize: 12.0,  //文字のサイズを調整する
+                ),
+            ),
+            onPressed: () => Navigator.of(context).pop(),
       ),
-    );
+      ),
+      body: Container(
+        color: Colors.white,
+        child: GameWidget(
+          game: myGambling,
+        ),
+      ),
+    ));
   }
 }
 
 class MyGambling extends FlameGame {
-
   // ***********************************************
-  // *                                             
-  // *	定数宣言                                      
-  // *                                             
+  // *
+  // *	定数宣言
+  // *
   // ***********************************************
   // 競馬ボタン
   MyButton? horseRacingButton = null;
 
   // 外貨売却ボタン
   MyButton? pachinkoButton = null;
-  
+
   // ビルドコンテキスト
   final BuildContext _buildContext;
 
   // ***********************************************
-  // *                                             
-  // *	コンストラクタ                                      
-  // *                                             
+  // *
+  // *	コンストラクタ
+  // *
   // ***********************************************
-  MyGambling(this._buildContext) :super();
+  MyGambling(this._buildContext) : super();
 
   // ***********************************************
-  // *                                             
-  // *	ロード処理                                      
-  // *                                             
+  // *
+  // *	ロード処理
+  // *
   // ***********************************************
   @override
   Future<void> onLoad() async {
     super.onLoad();
 
-
     // 競馬ボタンを追加する
     horseRacingButton = MyButton(
-        "mushi.png",
-        "mushi.png",
-        "\n競馬",
-        Vector2.all(100.0),
-        onPressed
-      );
+        "mushi.png", "mushi.png", "\n競馬", Vector2.all(100.0), onPressed);
     horseRacingButton!.GetPos(new Vector2(270, 680));
     await add(horseRacingButton!);
 
     // パチンコボタンを追加する
     pachinkoButton = MyButton(
-        "mushi.png",
-        "mushi.png",
-        "\nパチンコ",
-        Vector2.all(100.0),
-        onPressed
-      );
+        "mushi.png", "mushi.png", "\nパチンコ", Vector2.all(100.0), onPressed);
     pachinkoButton!.GetPos(new Vector2(370, 680));
     await add(pachinkoButton!);
   }
+
   // ***********************************************
-  // *                                             
-  // *	メソッド                                      
-  // *                                             
+  // *
+  // *	メソッド
+  // *
   // ***********************************************
   void onPressed(String type) {
     print("ボタンクリック内容");
@@ -100,13 +107,12 @@ class MyGambling extends FlameGame {
         print("競馬");
 
         break;
-      
+
       case "\nパチンコ":
         print("パチンコ");
 
         break;
       default:
     }
-    
   }
 }
