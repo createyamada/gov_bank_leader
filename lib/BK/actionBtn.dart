@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
+import 'package:gov_bank_leader/pages/interestRatePage.dart';
 
 
 class ActionBtn extends SpriteComponent with TapCallbacks , HasGameRef  {
@@ -20,6 +22,6 @@ class ActionBtn extends SpriteComponent with TapCallbacks , HasGameRef  {
 
   @override
   void onTapUp(TapUpEvent event) {
-    print("クリック処理完了");
+
   }
 }

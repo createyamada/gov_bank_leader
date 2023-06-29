@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gov_bank_leader/pages/gameMain.dart';
+import 'package:gov_bank_leader/pages/gameMainPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,7 +74,7 @@ class _titlePageState extends State<TitlePage> {
                 children: [
                   // タイトルテキスト
                   Text(
-                    "チャットアプリ",
+                    "政府依銀行総裁",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 64,
