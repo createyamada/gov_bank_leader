@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:gov_bank_leader/pages/foreignCurrencyPage.dart';
@@ -86,7 +87,8 @@ class MyGameMain extends FlameGame {
         Vector2.all(100.0),
         onPushMenuPressed
       );
-    interestRateButton!.GetPos(new Vector2(270, 680));
+    interestRateButton!.GetPos(new Vector2(viewSize.width / 2 - 150, 680));
+    interestRateButton!.GetAnchor(Anchor.bottomCenter);
     await add(interestRateButton!);
 
     // 外貨ボタンを追加する
@@ -97,7 +99,8 @@ class MyGameMain extends FlameGame {
         Vector2.all(100.0),
         onPushMenuPressed
       );
-    foreignCurrencyButton!.GetPos(new Vector2(470, 680));
+    foreignCurrencyButton!.GetPos(new Vector2(viewSize.width / 2, 680));
+    foreignCurrencyButton!.GetAnchor(Anchor.bottomCenter);
     await add(foreignCurrencyButton!);
 
     // ギャンブルボタンを追加する
@@ -108,7 +111,8 @@ class MyGameMain extends FlameGame {
         Vector2.all(100.0),
         onPushMenuPressed
       );
-    gamblingButton!.GetPos(new Vector2(670, 680));
+    gamblingButton!.GetPos(new Vector2(viewSize.width / 2 + 150, 680));
+    gamblingButton!.GetAnchor(Anchor.bottomCenter);
     await add(gamblingButton!);
 
   }

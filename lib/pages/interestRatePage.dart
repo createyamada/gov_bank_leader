@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import '../BK/character.dart';
@@ -82,15 +83,27 @@ class MyInterestRate extends FlameGame {
 
     // 金利上昇ボタンを追加する
     interestRateUpButton = MyButton(
-        "crate.png", "mushi.png", "\n金利を上げる", Vector2.all(100.0), onPressed);
-    interestRateUpButton!.GetPos(new Vector2(270, 680));
-    await add(interestRateUpButton!);
+        "crate.png", "mushi.png", "\n金利を上げる", Vector2(108, 96), onPressed);
+    interestRateUpButton!.GetPos(Vector2(viewSize.width / 2, 680));
+    interestRateUpButton!.GetAnchor(Anchor.bottomCenter);
+    // await add(interestRateUpButton!);
 
     // 金利下降ボタンを追加する
     interestRateDownButton = MyButton(
-        "crate.png", "mushi.png", "\n金利を下げる", Vector2.all(100.0), onPressed);
-    interestRateDownButton!.GetPos(new Vector2(370, 680));
-    await add(interestRateDownButton!);
+        "crate.png", "mushi.png", "\n金利を下げる", Vector2(108, 96), onPressed);
+    interestRateDownButton!.GetPos(Vector2(viewSize.width / 2, 680));
+    interestRateDownButton!.GetAnchor(Anchor.bottomCenter);
+    // await add(interestRateDownButton!);
+
+
+    await add(
+      PositionComponent(
+        children: [
+            interestRateUpButton!,
+            interestRateDownButton!,
+        ],
+      ),
+    );
   }
 
   // ***********************************************

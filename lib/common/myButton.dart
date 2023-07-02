@@ -90,6 +90,11 @@ class MyButton extends PositionComponent with HasGameRef {
     size = newSize;
   }
 
+  /// サイズを設定する
+  void GetAnchor(Anchor newAnchor) {
+    anchor = newAnchor;
+  }
+
   /// テキストを変更する
   void SetText() {
     buttonText!.SetText(buttonString, Colors.white, 21.0);
