@@ -8,13 +8,16 @@ import 'myUiImage.dart';
 import 'myText.dart';
 
 /// 背景を用意する
-class MyWorld extends SpriteComponent with HasGameRef {
+class MyWorld extends PositionComponent with HasGameRef {
   // 適応させる座標系
   PositionType posType = PositionType.viewport;
   // 背景の画像パス
   String ImagePath = "";
   // 画像のサイズ
   Size? viewSize = null;
+
+  MyUIImage? background = null;
+
 
   
 
@@ -26,8 +29,11 @@ class MyWorld extends SpriteComponent with HasGameRef {
   ///
   @override
   Future<void>? onLoad() async {
-    sprite = await gameRef.loadSprite(ImagePath);
+    // sprite = await gameRef.loadSprite(ImagePath);
     size = Vector2(viewSize!.width , viewSize!.height);
+    background = MyUIImage(ImagePath, size);
+
+    add(background!);
     await super.onLoad();
   }
 
