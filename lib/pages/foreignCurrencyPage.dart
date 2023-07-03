@@ -7,6 +7,7 @@ import '../BK/character.dart';
 // import '../world.dart';
 import '../BK/actionBtn.dart';
 import '../common/myButton.dart';
+import '../common/myWord.dart';
 
 /// ゲームメイン
 class ForeignCurrencyPage extends StatefulWidget {
@@ -56,6 +57,10 @@ class MyForeignCurrency extends FlameGame {
   // *	定数宣言
   // *
   // ***********************************************
+
+  // 背景
+  MyWorld? world = null; 
+  
   // 外貨購入ボタン
   MyButton? foreignCurrencyUpButton = null;
 
@@ -80,6 +85,10 @@ class MyForeignCurrency extends FlameGame {
   @override
   Future<void> onLoad() async {
     super.onLoad();
+
+    // 背景を追加
+    world = MyWorld('hole.png' , viewSize);
+    await add(world!);
 
     // 外貨購入ボタンを追加する
     foreignCurrencyUpButton = MyButton(

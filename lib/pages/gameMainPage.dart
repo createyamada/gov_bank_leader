@@ -8,8 +8,9 @@ import 'package:gov_bank_leader/pages/gamblingPage.dart';
 
 // import '../BK/character.dart';
 import '../common/myButton.dart';
+import '../common/myWord.dart';
 import 'interestRatePage.dart';
-// import '../world.dart';
+import '../world.dart';
 // import '../BK/actionBtn.dart';
 
 /// ゲームメイン
@@ -43,6 +44,10 @@ class MyGameMain extends FlameGame {
   // *	定数宣言                                      
   // *                                             
   // ***********************************************
+
+  // 背景
+  MyWorld? world = null; 
+  
   // 利金利調整ボタン
   MyButton? interestRateButton = null;
 
@@ -59,7 +64,7 @@ class MyGameMain extends FlameGame {
   final BuildContext _buildContext;
 
   //背景情報を取得
-  // World _world = World();
+  // WorldTest _world = WorldTest();
 
   // ***********************************************
   // *                                             
@@ -77,7 +82,10 @@ class MyGameMain extends FlameGame {
   @override
   Future<void> onLoad() async {
     super.onLoad();
-    // await add(_world);
+
+    // 背景を追加
+    world = MyWorld('hole.png' , viewSize);
+    await add(world!);
 
     // 金利調整ボタンを追加する
     interestRateButton = MyButton(

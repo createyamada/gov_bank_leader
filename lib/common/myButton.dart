@@ -90,7 +90,7 @@ class MyButton extends PositionComponent with HasGameRef {
     size = newSize;
   }
 
-  /// サイズを設定する
+  /// anchor設定する
   void GetAnchor(Anchor newAnchor) {
     anchor = newAnchor;
   }

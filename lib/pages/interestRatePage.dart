@@ -7,6 +7,7 @@ import '../BK/character.dart';
 // import '../world.dart';
 import '../BK/actionBtn.dart';
 import '../common/myButton.dart';
+import '../common/myWord.dart';
 
 /// ゲームメイン
 class InterestRatePage extends StatefulWidget {
@@ -56,6 +57,10 @@ class MyInterestRate extends FlameGame {
   // *	定数宣言
   // *
   // ***********************************************
+
+  // 背景
+  MyWorld? world = null; 
+
   // 利上げボタン
   MyButton? interestRateUpButton = null;
 
@@ -80,6 +85,10 @@ class MyInterestRate extends FlameGame {
   @override
   Future<void> onLoad() async {
     super.onLoad();
+
+    // 背景を追加
+    world = MyWorld('hole.png' , viewSize);
+    await add(world!);
 
     // 金利上昇ボタンを追加する
     interestRateUpButton = MyButton(
