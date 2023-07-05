@@ -3,9 +3,6 @@ import 'dart:ui';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import '../BK/character.dart';
-// import '../world.dart';
-import '../BK/actionBtn.dart';
 import '../common/myButton.dart';
 import '../common/myWord.dart';
 
@@ -87,12 +84,12 @@ class MyGambling extends FlameGame {
     super.onLoad();
 
     // 背景を追加
-    world = MyWorld('hole.png' , viewSize);
+    world = MyWorld('back.png' , viewSize);
     await add(world!);
 
     // 競馬ボタンを追加する
     horseRacingButton = MyButton(
-        "mushi.png", "mushi.png", "\n競馬", Vector2(108, 96), onPressed);
+        "mushi.png", "mushi.png", "\n競馬", Vector2.all(100.0), onPressed);
     horseRacingButton!.GetPos(new Vector2(viewSize.width / 2, 680));
     horseRacingButton!.GetAnchor(Anchor.bottomCenter);
     await add(horseRacingButton!);
@@ -100,7 +97,7 @@ class MyGambling extends FlameGame {
 
     // パチンコボタンを追加する
     pachinkoButton = MyButton(
-        "mushi.png", "mushi.png", "\nパチンコ", Vector2(108, 96), onPressed);
+        "mushi.png", "mushi.png", "\nパチンコ", Vector2.all(100.0), onPressed);
     pachinkoButton!.GetPos(new Vector2(viewSize.width / 2, 680));
     pachinkoButton!.GetAnchor(Anchor.bottomCenter);
     await add(pachinkoButton!);

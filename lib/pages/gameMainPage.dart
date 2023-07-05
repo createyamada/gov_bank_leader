@@ -5,13 +5,9 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:gov_bank_leader/pages/foreignCurrencyPage.dart';
 import 'package:gov_bank_leader/pages/gamblingPage.dart';
-
-// import '../BK/character.dart';
 import '../common/myButton.dart';
 import '../common/myWord.dart';
 import 'interestRatePage.dart';
-import '../world.dart';
-// import '../BK/actionBtn.dart';
 
 /// ゲームメイン
 class GameMainPage extends StatefulWidget {
@@ -84,7 +80,7 @@ class MyGameMain extends FlameGame {
     super.onLoad();
 
     // 背景を追加
-    world = MyWorld('hole.png' , viewSize);
+    world = MyWorld('back.png' , viewSize);
     await add(world!);
 
     // 金利調整ボタンを追加する

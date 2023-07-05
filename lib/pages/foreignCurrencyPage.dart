@@ -3,9 +3,6 @@ import 'dart:ui';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import '../BK/character.dart';
-// import '../world.dart';
-import '../BK/actionBtn.dart';
 import '../common/myButton.dart';
 import '../common/myWord.dart';
 
@@ -87,22 +84,24 @@ class MyForeignCurrency extends FlameGame {
     super.onLoad();
 
     // 背景を追加
-    world = MyWorld('hole.png' , viewSize);
+    world = MyWorld('back.png' , viewSize);
     await add(world!);
 
     // 外貨購入ボタンを追加する
     foreignCurrencyUpButton = MyButton(
-        "shiba.png", "mushi.png", "\n外貨購入", Vector2(108, 96), onPressed);
+        "shiba.png", "mushi.png", "\n外貨購入", Vector2.all(100.0), onPressed);
     foreignCurrencyUpButton!.GetPos(new Vector2(viewSize.width / 2, 680));
     foreignCurrencyUpButton!.GetAnchor(Anchor.bottomCenter);
     await add(foreignCurrencyUpButton!);
 
     // 外貨売却ボタンを追加する
     foreignCurrencyDownButton = MyButton(
-        "shiba.png", "mushi.png", "\n外貨売却", Vector2(108, 96), onPressed);
+        "shiba.png", "mushi.png", "\n外貨売却", Vector2.all(100.0), onPressed);
     foreignCurrencyDownButton!.GetPos(new Vector2(viewSize.width / 2, 680));
     foreignCurrencyDownButton!.GetAnchor(Anchor.bottomCenter); 
     await add(foreignCurrencyDownButton!);
+
+
   }
 
   // ***********************************************
