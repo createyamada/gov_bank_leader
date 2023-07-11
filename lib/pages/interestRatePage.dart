@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:gov_bank_leader/share.dart';
 import '../common/myButton.dart';
 import '../common/myWord.dart';
 
@@ -90,14 +91,14 @@ class MyInterestRate extends FlameGame {
     // 金利上昇ボタンを追加する
     interestRateUpButton = MyButton(
         "crate.png", "mushi.png", "\n金利を上げる", Vector2.all(100.0), onPressed);
-    interestRateUpButton!.GetPos(Vector2(viewSize.width / 2, 680));
+    interestRateUpButton!.GetPos(Vector2(viewSize.width / 2 - 100 , 680));
     interestRateUpButton!.GetAnchor(Anchor.bottomCenter);
     // await add(interestRateUpButton!);
 
     // 金利下降ボタンを追加する
     interestRateDownButton = MyButton(
         "crate.png", "mushi.png", "\n金利を下げる", Vector2.all(100.0), onPressed);
-    interestRateDownButton!.GetPos(Vector2(viewSize.width / 2, 680));
+    interestRateDownButton!.GetPos(Vector2(viewSize.width / 2 + 100, 680));
     interestRateDownButton!.GetAnchor(Anchor.bottomCenter);
     // await add(interestRateDownButton!);
 
@@ -124,12 +125,21 @@ class MyInterestRate extends FlameGame {
     switch (type) {
       case "\n金利を上げる":
         print("金利上昇");
-
+        Share share = Share(counter:0);
+        share.readSetting();
+        print("登録前表示");
+        print(share.counter);
+        share.saveSetting();
+        share.readSetting();
+        print("登録表後示");
+        print(share.counter);
         break;
 
       case "\n金利を下げる":
         print("金利下降");
-
+        Share share = Share(counter:0);
+        share.readSetting();
+        print(share.counter);
         break;
       default:
     }
