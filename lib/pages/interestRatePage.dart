@@ -118,28 +118,31 @@ class MyInterestRate extends FlameGame {
   // *	メソッド
   // *
   // ***********************************************
-  void onPressed(String type) {
+  void onPressed(String type) async {
     print("ボタンクリック内容");
     print(type);
 
     switch (type) {
       case "\n金利を上げる":
         print("金利上昇");
-        Share share = Share(counter:0);
-        share.readSetting();
-        print("登録前表示");
-        print(share.counter);
-        share.saveSetting();
-        share.readSetting();
-        print("登録表後示");
-        print(share.counter);
+        // Share share = await Share();
+        // share.readSetting();
+        // print("登録前表示");
+        // print(share.date_counter);
+        // await share.saveSetting("yamadaman");
+        // await share.readSetting();
+        // print("登録表後示");
+        // print(share.date_counter);
+        // print(share.user_name);
+        // print(share.score);
+        // print(test);
         break;
 
       case "\n金利を下げる":
         print("金利下降");
-        Share share = Share(counter:0);
-        share.readSetting();
-        print(share.counter);
+        // Share share = Share();
+        // await share.readSetting();
+        // print(share.date_counter);
         break;
       default:
     }

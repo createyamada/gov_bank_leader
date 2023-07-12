@@ -18,7 +18,6 @@ class MyButton extends PositionComponent with HasGameRef {
   // ボタンテキスト
   String buttonString = "";
   // スプライトサイズ
-  // Vector2 spritSize = Vector2.all(100.0);
   Vector2 spritSize = Vector2(32.0,32.0);
   // ボタンコンポーネント
   ButtonComponent? buttonComponent = null;
