@@ -59,9 +59,6 @@ class MyGameMain extends FlameGame {
   // ビルドコンテキスト
   final BuildContext _buildContext;
 
-  //背景情報を取得
-  // WorldTest _world = WorldTest();
-
   // ***********************************************
   // *                                             
   // *	コンストラクタ                                      
