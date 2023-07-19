@@ -31,7 +31,7 @@ class _ForeignCurrencyPageState extends State<ForeignCurrencyPage> {
               'キャンセル',
               style: TextStyle(
                 color: Colors.white,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
                 fontSize: 12.0,
                 ),
             ),
