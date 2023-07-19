@@ -25,14 +25,14 @@ class _ForeignCurrencyPageState extends State<ForeignCurrencyPage> {
         home: Scaffold(
       appBar: AppBar(
         title: const Text("外貨売買画面"),
-        leadingWidth: 85,  //leadingWidthを設定する
+        leadingWidth: 85,
         leading: TextButton(
             child: Text(
               'キャンセル',
               style: TextStyle(
-                color: Colors.white,  //文字の色を白にする
-                fontWeight: FontWeight.bold,  //文字を太字する
-                fontSize: 12.0,  //文字のサイズを調整する
+                color: Colors.white,
+                fontWeight: FontWeight.bold
+                fontSize: 12.0,
                 ),
             ),
             onPressed: () => Navigator.of(context).pop(),
