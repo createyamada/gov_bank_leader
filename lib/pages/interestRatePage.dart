@@ -125,24 +125,30 @@ class MyInterestRate extends FlameGame {
     switch (type) {
       case "\n金利を上げる":
         print("金利上昇");
-        // Share share = await Share();
-        // share.readSetting();
-        // print("登録前表示");
-        // print(share.date_counter);
-        // await share.saveSetting("yamadaman");
-        // await share.readSetting();
-        // print("登録表後示");
-        // print(share.date_counter);
-        // print(share.user_name);
-        // print(share.score);
-        // print(test);
+        // データ保存用インスタンス生成
+        Share share = Share();
+        // 金利を上昇させる
+        await share.setRate(-0.25);
+        // 月カウンターをインクリメント
+        await share.setCounter();
+        // 設定情報を取得
+        await share.getSetting();
+        print(share.date_counter);
+        print(share.rate);
         break;
 
       case "\n金利を下げる":
         print("金利下降");
-        // Share share = Share();
-        // await share.readSetting();
-        // print(share.date_counter);
+        // データ保存用インスタンス生成
+        Share share = Share();
+        // 金利を下降させる
+        await share.setRate(-0.25);
+        // 月カウンターをインクリメント
+        await share.setCounter();
+        // 設定情報を取得
+        await share.getSetting();
+        print(share.date_counter);
+        print(share.rate);
         break;
       default:
     }
