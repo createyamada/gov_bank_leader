@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "620053387148",
+    "project_id": "govbankleader",
+    "storage_bucket": "govbankleader.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620053387148:android:b8b0e59136de07853b68a9",
+        "android_client_info": {
+          "package_name": "com.example.gov_bank_leader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620053387148-h1hgrmobol7uu49r1g75ec26oc83f8o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwIKia6fDTHMU6Gguko-iFxfH6glZuwPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "620053387148-h1hgrmobol7uu49r1g75ec26oc83f8o8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "620053387148-6jgnl3pvs0bm827k66bj8cuju9qu07v1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.govBankLeader.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
