@@ -3,8 +3,11 @@ import 'dart:ui';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:gov_bank_leader/action/gamblling.dart';
+import 'package:gov_bank_leader/share.dart';
 import '../common/myButton.dart';
 import '../common/myWord.dart';
+import 'dart:math' as math;
 
 /// ゲームメイン
 class GamblingPage extends StatefulWidget {
@@ -61,9 +64,6 @@ class MyGambling extends FlameGame {
   // 競馬ボタン
   MyButton? horseRacingButton = null;
 
-  // 外貨売却ボタン
-  MyButton? pachinkoButton = null;
-
   // ビルドコンテキスト
   final BuildContext _buildContext;
 
@@ -94,13 +94,6 @@ class MyGambling extends FlameGame {
     horseRacingButton!.GetAnchor(Anchor.bottomCenter);
     await add(horseRacingButton!);
     
-
-    // パチンコボタンを追加する
-    pachinkoButton = MyButton(
-        "mushi.png", "mushi.png", "\nパチンコ", Vector2.all(100.0), onPressed);
-    pachinkoButton!.GetPos(new Vector2(viewSize.width / 2, 680));
-    pachinkoButton!.GetAnchor(Anchor.bottomCenter);
-    await add(pachinkoButton!);
   }
 
   // ***********************************************
@@ -108,19 +101,29 @@ class MyGambling extends FlameGame {
   // *	メソッド
   // *
   // ***********************************************
-  void onPressed(String type) {
+  void onPressed(String type) async {
     print("ボタンクリック内容");
     print(type);
 
     switch (type) {
       case "\n競馬":
         print("競馬");
+        var random = math.Random();
+        Gambling gambling = Gambling();
+        // オッズをランダムに生成
+        List<int> odds = gambling.generateOdds();
+        int rand = random.nextInt(5);
+        // 競馬処理を実行
+        int getValue = gambling.doHorseRacing(odds[rand]);
 
-        break;
-
-      case "\nパチンコ":
-        print("パチンコ");
-
+        // データ保存用インスタンス生成
+        Share share = Share();
+        // 月カウンターをインクリメント
+        await share.setCounter();
+        // 設定情報を取得
+        await share.getSetting();
+        print(share.date_counter);
+        print(share.rate);
         break;
       default:
     }
