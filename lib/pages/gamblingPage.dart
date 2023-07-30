@@ -107,7 +107,6 @@ class MyGambling extends FlameGame {
 
     switch (type) {
       case "\n競馬":
-        print("競馬");
         var random = math.Random();
         Gambling gambling = Gambling();
         // オッズをランダムに生成
@@ -115,6 +114,7 @@ class MyGambling extends FlameGame {
         int rand = random.nextInt(5);
         // 競馬処理を実行
         int getValue = gambling.doHorseRacing(odds[rand]);
+        print(getValue);
 
         // データ保存用インスタンス生成
         Share share = Share();

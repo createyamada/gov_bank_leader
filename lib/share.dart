@@ -5,14 +5,18 @@ class Share {
   int? date_counter = null;
   // ゲーム内ユーザ名
   String? user_name = null;
-  // ゲーム内通貨量
-  int? currency_amount = null;
+  // ゲーム内物価
+  int? cost_of_living = null;
   // ゲーム内金利
   double? rate = null;
-  // ゲーム内外貨
-  double? foreign_amount = null;
-  // ゲーム内スコア
-  int? score = null;
+  // ゲーム内民間銀行預金額
+  int? bank_saving = null;
+  // ゲーム内民間銀行預金率
+  double? bank_saving_rate = null;
+  // ゲーム内預貯金残高
+  int? saving_aumont= null;
+  // ゲーム内雇用統計
+  double? employment_statistics = null;
 
   /**
 	* 設定値の取得処理
@@ -23,10 +27,13 @@ class Share {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     this.date_counter = await (prefs.getInt('date_counter') ?? 0);
     this.user_name = await prefs.getString('user_name') ?? '';
-    this.currency_amount = await (prefs.getInt('currency_amount') ?? 0);
-    this.score = await (prefs.getInt('score') ?? 0);
+    this.cost_of_living = await (prefs.getInt('cost_of_living') ?? 0);
     this.rate = await (prefs.getDouble('rate') ?? 0);
-    this.foreign_amount = await (prefs.getDouble('foreign_amount') ?? 0);
+    this.bank_saving = await (prefs.getInt('bank_saving') ?? 0);
+    this.bank_saving_rate = await (prefs.getDouble('bank_saving_rate') ?? 0);
+    this.saving_aumont = await (prefs.getInt('saving_aumont') ?? 0);
+    this.employment_statistics = await (prefs.getDouble('employment_statistics') ?? 0);
+
   }
 
   /**
@@ -93,16 +100,16 @@ class Share {
   }
 
   /**
-	* スコアアップ
+	* 預貯金残高
 	* @param int plus
 	* @return void
 	*/
-  Future<void> setScore(int plus) async {
+  Future<void> setSaving(int plus) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    int _score = await (prefs.getInt('score') ?? 0);
+    int _saving_aumont = await (prefs.getInt('saving_aumont') ?? 0);
     // 変数をインクリメントする
-    _score = _score + plus;
-    await prefs.setInt('score', _score);
+    _saving_aumont = _saving_aumont + plus;
+    await prefs.setInt('saving_aumont', _saving_aumont);
   }
 
 // 設定値を削除
