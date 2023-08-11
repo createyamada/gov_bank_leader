@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Share {
@@ -15,8 +17,12 @@ class Share {
   double? bank_saving_rate = null;
   // ゲーム内預貯金残高
   int? saving_aumont= null;
+  // 国民幸福指数
+  int? happy_rate = null;
   // ゲーム内雇用統計
-  double? employment_statistics = null;
+  // int? employment_statistics = null;
+  // ゲーム株価
+  // int? stock_price = null;
 
   /**
 	* 設定値の取得処理
@@ -32,12 +38,13 @@ class Share {
     this.bank_saving = await (prefs.getInt('bank_saving') ?? 0);
     this.bank_saving_rate = await (prefs.getDouble('bank_saving_rate') ?? 0);
     this.saving_aumont = await (prefs.getInt('saving_aumont') ?? 0);
-    this.employment_statistics = await (prefs.getDouble('employment_statistics') ?? 0);
-
+    this.happy_rate = await (prefs.getInt('happy_rate') ?? 0);
+    // this.employment_statistics = await (prefs.getInt('employment_statistics') ?? 0);
+    // this.stock_price = await (prefs.getInt('stock_price') ?? 0);
   }
 
   /**
-	* Counterのインクリメント保存
+	* 日付カウントのインクリメント保存
 	* @param null
 	* @return void
 	*/
@@ -60,17 +67,18 @@ class Share {
     await prefs.setString('user_name', name);
   }
 
+
   /**
-	* 通貨量変化
+	* 物価変化
 	* @param int plus
 	* @return void
 	*/
-  Future<void> setCurrencyAmount(int plus) async {
+  Future<void> setCostOfliving(int plus) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    int _currency_amount = await (prefs.getInt('currency_amount') ?? 0);
+    int _cost_of_living = await (prefs.getInt('cost_of_living') ?? 0);
     // 変数をインクリメントする
-    _currency_amount = _currency_amount + plus;
-    await prefs.setInt('currency_amount', _currency_amount);
+    _cost_of_living = _cost_of_living + plus;
+    await prefs.setInt('cost_of_living', _cost_of_living);
   }
 
   /**
@@ -85,18 +93,44 @@ class Share {
     _rate = _rate + plus;
     await prefs.setDouble('rate', _rate);
   }
+  
+  /**
+	* 民間銀行預金額変化
+	* @param int plus
+	* @return void
+	*/
+  Future<void> setBankSaving(int plus) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int _bank_saving = await (prefs.getInt('bank_saving') ?? 0);
+    // 変数をインクリメントする
+    _bank_saving = _bank_saving + plus;
+    await prefs.setInt('bank_saving', _bank_saving);
+  }
 
   /**
-	* 外貨量変化
+	* 民間銀行預金比率変化
 	* @param double plus
 	* @return void
 	*/
-  Future<void> setForeiginAmount(double plus) async {
+  Future<void> setBankSavingRate(double plus) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    double _foreign_amount = await (prefs.getDouble('foreign_amount') ?? 0);
+    double _bank_saving_rate = await (prefs.getDouble('bank_saving_rate') ?? 0);
     // 変数をインクリメントする
-    _foreign_amount = _foreign_amount + plus;
-    await prefs.setDouble('foreign_amount', _foreign_amount);
+    _bank_saving_rate = _bank_saving_rate + plus;
+    await prefs.setDouble('bank_saving_rate', _bank_saving_rate);
+  }
+
+  /**
+	* 通貨量変化
+	* @param int plus
+	* @return void
+	*/
+  Future<void> setCurrencyAmount(int plus) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int _currency_amount = await (prefs.getInt('currency_amount') ?? 0);
+    // 変数をインクリメントする
+    _currency_amount = _currency_amount + plus;
+    await prefs.setInt('currency_amount', _currency_amount);
   }
 
   /**
@@ -111,6 +145,47 @@ class Share {
     _saving_aumont = _saving_aumont + plus;
     await prefs.setInt('saving_aumont', _saving_aumont);
   }
+
+  /**
+	* 国民幸福度
+	* @param int plus
+	* @return void
+	*/
+  Future<void> setHappyRate(int plus) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int _happy_rate = await (prefs.getInt('happy_rate') ?? 0);
+    // 変数をインクリメントする
+    _happy_rate = _happy_rate + plus;
+    await prefs.setInt('happy_rate', _happy_rate);
+  }
+
+  // /**
+	// * 雇用統計変化
+	// * @param double plus
+	// * @return void
+	// */
+  // Future<void> setEmploymentStatistics(int plus) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   int _employment_statistics = await (prefs.getInt('employment_statistics') ?? 0);
+  //   // 変数をインクリメントする
+  //   _employment_statistics = _employment_statistics + plus;
+  //   await prefs.setInt('employment_statistics', _employment_statistics);
+  // }
+
+  // /**
+	// * 株価変化
+	// * @param double plus
+	// * @return void
+	// */
+  // Future<void> setStockPrice(int plus) async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   int _stock_price = await (prefs.getInt('stock_price') ?? 0);
+  //   // 変数をインクリメントする
+  //   _stock_price = _stock_price + plus;
+  //   await prefs.setInt('_stock_price', _stock_price);
+  // }
+
+
 
 // 設定値を削除
   void _deleteSetting() async {
